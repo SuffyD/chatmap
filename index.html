@@ -14,6 +14,7 @@
         margin: 0;
         padding: 2em 0;
         font-family: sans-serif;
+        cursor: none;
       }
       div {
         width: 600px;
@@ -35,10 +36,29 @@
           width: auto;
         }
       }
+      .circle-cursor {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: white;
+        mix-blend-mode: difference;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        transition: transform 0.2s ease;
+      }
     </style>
+    <script>
+      const cursor = document.querySelector(".circle-cursor");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+      });
+    </script>
   </head>
 
   <body>
+    <div class="circle-cursor"></div>
     <div>
       <h1>Installation</h1>
       <p>1. Enable the bookmarks toolbar using Ctrl+Shift+B.</p>
